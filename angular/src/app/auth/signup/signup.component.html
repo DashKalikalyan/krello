@@ -1,16 +1,16 @@
 <div class="row">
-  <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2 ">
-    <div>
-      <form class="col-md-8">
+  <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6 ">
+      <form (ngSubmit)="onSubmit(f)" #f="ngForm" class="col-md-8 ">
         <div class="form-group">
           <label for="firstName">First Name</label>
           <input
-            type="firstName"
+            type="text"
             id="firstName"
             name="firstName"
             class="form-control"
             placeholder="First Name"
-            ngModel>
+            ngModel
+            required>
         </div>
 
         <br>
@@ -18,12 +18,13 @@
         <div class="form-group">
           <label for="lastName">Last Name</label>
           <input
-            type="lastName"
+            type="text"
             id="lastName"
             name="lastName"
             class="form-control"
             placeholder="Last Name"
-            ngModel>
+            ngModel
+            required>
         </div>
 
         <br>
@@ -31,12 +32,13 @@
         <div class="form-group">
           <label for="phoneNumber">Phone Number</label>
           <input
-            type="phoneNumber"
+            type="text"
             id="phoneNumber"
             name="phoneNumber"
             class="form-control"
             placeholder="Phone Number"
-            ngModel>
+            ngModel
+            required>
         </div>
 
         <br>
@@ -49,7 +51,11 @@
             name="email"
             class="form-control"
             placeholder="Email id"
-            ngModel>
+            ngModel
+            required
+            email
+            #email="ngModel">
+          <span class="help-block" *ngIf="!email.valid && email.touched">Please enter a valid email address</span>
         </div>
 
         <br>
@@ -62,19 +68,20 @@
             name="password"
             class="form-control"
             placeholder="password"
-            ngModel>
+            ngModel
+            required>
         </div>
         <br>
-        <button class="btn btn-primary" type="submit">Sign Up</button>
+        <button class="btn btn-primary" [disabled]="!f.valid" type="submit">Sign Up</button>
       </form>
 
-    </div>
 
-    <div class="col-md-4">
-      <br><br><br>
-      <img src="/assets/images/krello.jpg">
-    </div>
+  </div>
 
+  <div class="col-md-6 col-lg-6">
+    <br><br><br>
+    <img src="/assets/images/krello.jpg">
+    <h1>  Manage your responsibilities</h1>
   </div>
 </div>
 

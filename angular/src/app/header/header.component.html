@@ -1,25 +1,50 @@
-<nav class="navbar navbar-default navCustom">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#"><img src="/assets/images/krello.jpg" style="width: 120px; margin-top:-5px; margin-left:-5px"></a>
+<nav class="navbar navbar-default" style="background-color: black">
+  <div class="container-fluid navCustom">
+    <div class="row">
+      <div class="navbar-header col-lg-2">
+        <a class="navbar-brand" routerLink="/"><img src="/assets/images/krello.jpg" style="width: 120px;  margin-top:10px; margin-left:-5px"></a>
+      </div>
+      <div class="col-lg-6">
+        <div class="btn-group" style="margin-top: 30px; margin-left: 150px">
+          <a routerLink="/todo"><button type="button" class="btn btn-primary btn-lg"  style="width:250px">To-do</button></a>
+          <a routerLink="/profile"><button type="button" class="btn btn-primary btn-lg" style="width:250px">Profile</button></a>
+        </div>
+      </div>
     </div>
-    <!--<ul class="nav navbar-nav">-->
-      <!--<li class="active"><a href="#">Home</a></li>-->
-      <!--<li><a href="#">Page 1</a></li>-->
-      <!--<li><a href="#">Page 2</a></li>-->
-      <!--<li><a href="#">Page 3</a></li>-->
-    <!--</ul>-->
-    <ul class="nav navbar-nav navbar-right ">
+
+
+    <ul class="nav navbar-nav navbar-right" style="background-color: black">
         <li routerLinkActive= "active">
-          <a routerLink="/signup">
-            <button class="btn btn-primary btn-lg">Sign Up</button>
+          <a routerLink="/signup" style="background-color: black">
+            <button class="btn btn-primary" style="margin-top: -70px" >Sign Up</button>
           </a>
         </li>
         <li routerLinkActive= "active">
-          <a routerLink="/signin">
-            <button class="btn btn-success btn-lg">Sign In</button>
+          <a routerLink="/signin" style="background-color: black">
+            <button class="btn btn-success" style="margin-top: -70px">Sign In</button>
           </a>
         </li>
     </ul>
   </div>
+
+  <div class="btn-group">
+    <div class="container" style="margin-left: 100px;">
+      <div class="row">
+        <div class="col-lg-3">
+          <button type="button" class="btn btn-primary" style="height: 50px; width: 300px">All</button>
+        </div>
+        <div class="col-lg-3">
+          <button type="button" class="btn btn-success" style="height: 50px; width: 300px">Completed</button>
+        </div>
+        <div class="col-lg-3">
+          <button type="button" class="btn btn-danger" style="height: 50px; width: 300px">Late</button>
+        </div>
+        <div class="col-lg-3">
+          <button type="button" class="btn btn-warning" style="height: 50px; width: 300px">Ongoing</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </nav>
+
+
