@@ -1,5 +1,5 @@
-<p>
-  todo-list works
+<div class="row">
+  <app-todo-item *ngFor="let todoTemp of todos; let i = index" [todo] = "todoTemp" [index]="i"></app-todo-item>
+</div>
 
-</p>
-<app-todo-item></app-todo-item>
+

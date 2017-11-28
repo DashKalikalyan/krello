@@ -5,12 +5,19 @@ import {ProfileComponent} from "./profile/profile.component";
 import {WelcomeComponent} from "./welcome/welcome.component";
 import {SignupComponent} from "./auth/signup/signup.component";
 import {SigninComponent} from "./auth/signin/signin.component";
-
+import {TodoDetailComponent} from "./todo/todo-detail/todo-detail.component";
+import {TodoStartComponent} from "./todo/todo-start/todo-start.component";
+import {TodoEditComponent} from "./todo/todo-edit/todo-edit.component";
 
 
 const appRoutes: Routes = [
   {path:'', component: WelcomeComponent},
-  {path: 'todo', component: TodoComponent},
+  {path: 'todo', component: TodoComponent, children : [
+    {path: '', component: TodoStartComponent},
+    {path: 'new', component: TodoEditComponent},
+    {path: ':id', component: TodoDetailComponent},
+    {path: ':id/edit', component: TodoEditComponent}
+  ]},
   {path: 'profile', component: ProfileComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'signin', component: SigninComponent}

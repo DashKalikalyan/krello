@@ -1,5 +1,17 @@
-<p>
-  todo works
-</p>
+<div class="row">
+  <div class="col-lg-6">
+    <app-todo-list></app-todo-list>
 
-<app-todo-list></app-todo-list>
+  </div>
+  <div class="col-lg-6">
+    <!--<app-todo-detail *ngIf="selectedTodo" [todo] = "selectedTodo"></app-todo-detail>-->
+    <!--<app-todo-start *ngIf="!selectedTodo"></app-todo-start>-->
+    <router-outlet></router-outlet>
+  </div>
+
+</div>
+
+
+
+
+

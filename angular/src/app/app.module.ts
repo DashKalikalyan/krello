@@ -6,12 +6,16 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { HeaderComponent } from './header/header.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
 import { TodoComponent } from './todo/todo.component';
 import { TodoListComponent } from './todo/todo-list/todo-list.component';
 import { TodoItemComponent } from './todo/todo-list/todo-item/todo-item.component';
 import {AppRoutingModule} from './app-routing.module';
+import {TodoService} from './todo/todo.service';
+import { TodoDetailComponent } from './todo/todo-detail/todo-detail.component';
+import { TodoStartComponent } from './todo/todo-start/todo-start.component';
+import { TodoEditComponent } from './todo/todo-edit/todo-edit.component';
 
 @NgModule({
   declarations: [
@@ -23,14 +27,18 @@ import {AppRoutingModule} from './app-routing.module';
     ProfileComponent,
     TodoComponent,
     TodoListComponent,
-    TodoItemComponent
+    TodoItemComponent,
+    TodoDetailComponent,
+    TodoStartComponent,
+    TodoEditComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [TodoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,26 @@
+<div style="margin-left: 50px">
+  <div class= "col-lg-12" style="background-color: #edeff0; border: 2px solid black">
+    <div style="max-width: 1200px;padding: 2pc;position: relative; height:200px">
+      <h1>{{todo.text}}</h1>
+      <h4>Priority- {{todo.priority}}</h4>
+      <h3>Completed- {{todo.completed}}</h3>
+      <p>Due: {{todo.toBeCompletedBy}}</p>
+      <h3>{{todo.completedAt}}</h3>
+    </div>
+    <div class="pull-left">
+      <br><br>
+      <button class="btn btn-primary" (click)="onEditTodo()">
+        <span class="glyphicon glyphicon-edit pull-right">
+
+        </span>Edit Todo
+      </button>
+      <br> <br>
+    </div>
+
+  </div>
+
+</div>
+
+
+
+
