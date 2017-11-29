@@ -6,7 +6,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { HeaderComponent } from './header/header.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormsModule} from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
 import { TodoComponent } from './todo/todo.component';
 import { TodoListComponent } from './todo/todo-list/todo-list.component';
@@ -16,6 +16,10 @@ import {TodoService} from './todo/todo.service';
 import { TodoDetailComponent } from './todo/todo-detail/todo-detail.component';
 import { TodoStartComponent } from './todo/todo-start/todo-start.component';
 import { TodoEditComponent } from './todo/todo-edit/todo-edit.component';
+import { ProfileEditComponent } from './profile/profile-edit/profile-edit.component';
+import {ProfileService} from "./profile/profile.service";
+import {AuthService} from "./auth/auth.service";
+import {HttpModule} from "@angular/http";
 
 @NgModule({
   declarations: [
@@ -31,14 +35,15 @@ import { TodoEditComponent } from './todo/todo-edit/todo-edit.component';
     TodoDetailComponent,
     TodoStartComponent,
     TodoEditComponent,
+    ProfileEditComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpModule
   ],
-  providers: [TodoService],
+  providers: [TodoService, ProfileService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

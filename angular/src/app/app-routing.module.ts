@@ -8,6 +8,7 @@ import {SigninComponent} from "./auth/signin/signin.component";
 import {TodoDetailComponent} from "./todo/todo-detail/todo-detail.component";
 import {TodoStartComponent} from "./todo/todo-start/todo-start.component";
 import {TodoEditComponent} from "./todo/todo-edit/todo-edit.component";
+import {ProfileEditComponent} from "./profile/profile-edit/profile-edit.component";
 
 
 const appRoutes: Routes = [
@@ -18,7 +19,9 @@ const appRoutes: Routes = [
     {path: ':id', component: TodoDetailComponent},
     {path: ':id/edit', component: TodoEditComponent}
   ]},
-  {path: 'profile', component: ProfileComponent},
+  {path: 'profile', component: ProfileComponent, children : [
+    {path: 'edit', component: ProfileEditComponent},
+  ]},
   {path: 'signup', component: SignupComponent},
   {path: 'signin', component: SigninComponent}
 ];

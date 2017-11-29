@@ -26,7 +26,7 @@ export class TodoDetailComponent implements OnInit {
   }
 
   onEditTodo() {
-    this.router.navigate(['edit'], {relativeTo : this.route});
+    this.router.navigate(['todo',this.id,'edit']);
 
   }
 

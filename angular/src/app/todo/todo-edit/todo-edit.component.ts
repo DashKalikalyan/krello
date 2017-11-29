@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Params} from "@angular/router";
+import {ActivatedRoute, Params, Router} from "@angular/router";
 import {TodoService} from "../todo.service";
 import {Todo} from "../todo.model";
 import {NgForm} from "@angular/forms";
@@ -13,9 +13,9 @@ export class TodoEditComponent implements OnInit {
   todo : Todo;
   id : number;
   editMode : boolean;
-  form : NgForm;
   constructor(private route : ActivatedRoute,
-              private todoService : TodoService) { }
+              private todoService : TodoService,
+              private router : Router) { }
 
   ngOnInit() {
     this.route.params
@@ -25,15 +25,52 @@ export class TodoEditComponent implements OnInit {
         console.log(this.editMode);
         if (this.editMode) {
             this.todo = this.todoService.getTodo(this.id);
-            // this.form.value.text = this.todo.text;
-            // this.form.value.category = this.todo.category;
-            // this.form.value.priority = this.todo.priority;
-            // this.form.value.toBeCompletedBy = this.todo.toBeCompletedBy;
-            // this.form.value.completed = this.todo.completed;
             console.log(this.todo);
-            console.log(typeof (this.form));
+        }
+        else {
+          this.id= 0;
+          this.todo = {
+            text : null,
+            category : null,
+            priority : null,
+            toBeCompletedBy : null,
+            completed : null,
+            completedAt : null
+          };
         }
       });
+  }
+
+  onSubmit(form : NgForm) {
+    if (this.editMode) {
+      console.log(form);
+      this.todo.text = form.value.text;
+      this.todo.category = form.value.category;
+      this.todo.priority = form.value.priority;
+      this.todo.toBeCompletedBy = form.value.toBeCompletedBy;
+      this.todo.completed = form.value.completed ;
+      console.log(this.todo);
+      this.todoService.updateTodo(this.id, this.todo);
+    } else {
+      console.log()
+      this.todo.text = form.value.text;
+      this.todo.category = form.value.category;
+      this.todo.priority = form.value.priority;
+      this.todo.toBeCompletedBy = form.value.toBeCompletedBy;
+      this.todo.completed = form.value.completed ;
+      this.todoService.addTodo(this.todo);
+    }
+
+    this.router.navigate(['todo', this.id]);
+  }
+
+  onCancel() {
+    if (this.editMode) {
+      this.router.navigate(['todo', this.id]);
+    } else {
+      this.router.navigate(['todo']);
+    }
+
   }
 
 }

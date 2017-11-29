@@ -5,7 +5,7 @@
 
 <div class="row" style="height: 425px">
   <div class="col-lg-8">
-    <form>
+    <form (ngSubmit) = onSubmit(f) #f="ngForm">
       <div class="row">
         <div class="col-lg-12">
           <div class="form-group">
@@ -16,7 +16,7 @@
               name="text"
               class="form-control"
               placeholder="To-do"
-              ngModel
+              [ngModel]="todo.text"
               required>
           </div>
         </div>
@@ -32,7 +32,7 @@
               name="category"
               class="form-control"
               placeholder="ex- work, study, home"
-              ngModel
+              [ngModel]="todo.category"
               required>
           </div>
         </div>
@@ -48,7 +48,7 @@
               name="priority"
               class="form-control"
               placeholder="ex- ex- high medium low"
-              ngModel
+              [ngModel]="todo.priority"
               required>
           </div>
         </div>
@@ -64,7 +64,7 @@
               name="toBeCompletedBy"
               class="form-control"
               placeholder="ex- ex- high medium low"
-              ngModel
+              [ngModel]="todo.toBeCompletedBy"
               required>
           </div>
         </div>
@@ -80,15 +80,15 @@
               name="completed"
               class="form-control"
               placeholder="ex- yes or no"
-              ngModel
+              [ngModel]="todo.completed"
               required>
           </div>
         </div>
       </div>
 
         <div class="col-lg-12 pull-right">
-          <button class="btn btn-success">Done</button>
-          <button class="btn btn-danger">Cancel</button>
+          <button class="btn btn-success" [disabled]="!f.valid" type="submit">Done</button>
+          <button class="btn btn-danger" (click)="onCancel()">Cancel</button>
         </div>
 
     </form>

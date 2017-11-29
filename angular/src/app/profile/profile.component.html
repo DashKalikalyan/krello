@@ -1,20 +1,26 @@
-<div style="background-color: #edeff0">
+<div style="background-color: #edeff0 " class="col-lg-8">
   <div style="max-width: 1200px;padding: 2pc;position: relative; height:200px">
     <div class="row">
       <div class="col-lg-2">
-        <img src="/assets/images/krello.jpg" class="img-thumbnail picture" style="height: 150px;">
+        <div class="gavatar" >{{profile.lastName.substring(0,1) + profile.firstName.substring(0,1)}}</div>
       </div>
-      <div class="col-lg-8">
-        <h1>Kalikalyan Dash</h1>
-        <h4>San Jose</h4>
+      <div class="col-lg-6">
+        <h1>{{profile.firstName+' '+profile.lastName}}</h1>
+        <h4>{{profile.email}}</h4>
+        <p>{{profile.phoneNumber}}</p>
       </div>
 
-      <div class="col-lg-2">
-        <button class="btn btn-primary pull-right"><span class="glyphicon glyphicon-edit"></span> Edit Profile</button>
+      <div class="col-lg-2 pull-right">
+        <button class="btn btn-primary" routerLink="edit"><span class="glyphicon glyphicon-edit"></span> Edit Profile</button>
       </div>
     </div>
   </div>
 </div>
+
+<div class="col-lg-4">
+  <router-outlet></router-outlet>
+</div>
+
 
 
 
