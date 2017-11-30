@@ -20,6 +20,7 @@ import { ProfileEditComponent } from './profile/profile-edit/profile-edit.compon
 import {ProfileService} from "./profile/profile.service";
 import {AuthService} from "./auth/auth.service";
 import {HttpModule} from "@angular/http";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import {HttpModule} from "@angular/http";
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpModule
+    HttpModule,
+    HttpClientModule
   ],
   providers: [TodoService, ProfileService, AuthService],
   bootstrap: [AppComponent]

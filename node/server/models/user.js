@@ -53,7 +53,7 @@ var UserSchema = new Schema ({
 UserSchema.methods.toJSON = function() {
     var user = this;
     var userObject = user.toObject();
-    return _.pick(userObject,['_id', 'email', 'firstName', 'lastName', 'phoneNumber']);
+    return _.pick(userObject,['_id', 'email', 'firstName', 'lastName', 'phoneNumber','tokens']);
 };
 
 UserSchema.statics.findByToken = function (token) {

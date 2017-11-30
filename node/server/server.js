@@ -21,6 +21,7 @@ var app = express();
 
 app.use(bodyParser.json());
 
+
 app.post('/todos', authenticate,(req, res) => {
     var todo = new Todo ({
         text: req.body.text,
@@ -99,13 +100,14 @@ app.post('/users', (req, res) => {
             console.log();
         } else {
             body.password =hash;
-            console.log(body);
             var user = new User (body);
 
             user.save().then((doc) => {
+                console.log('Here is the user1',user);
                 return user.generateAuthToken();
             }).then((token) => {
-                res.header('x-auth', token).send(user);
+                console.log('Here is the user2',user);
+                res.send(user);
             }).catch((e) => {
                 res.status(400).send(e);
             });
@@ -124,7 +126,8 @@ app.post('/users/login', (req, res) => {
             bcrypt.compare(body.password,user.password, (err, result) => {
                 if(result) {
                     user.generateAuthToken().then((token) => {
-                        res.header('x-auth', token).send(body);
+                        // res.header('x-auth', token).send(body);
+                        res.send(user);
                     });
                 }
             });
