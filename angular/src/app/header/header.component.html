@@ -1,56 +1,89 @@
-<nav class="navbar navbar-default" style="background-color: black">
-  <div class="container-fluid navCustom">
-    <div class="row">
-      <div class="navbar-header col-lg-2">
-        <a class="navbar-brand" routerLink="/"><img src="/assets/images/krello.jpg" style="width: 120px;  margin-top:10px; margin-left:-5px"></a>
-      </div>
-      <div class="col-lg-6">
-        <div class="btn-group" style="margin-top: 30px; margin-left: 150px" *ngIf="isAuthenticated()">
-          <a routerLink="/todo/new"><button type="button" class="btn btn-primary"  style="width:166px">New</button></a>
-          <a routerLink="/todo"><button type="button" class="btn btn-primary "  style="width:166px">To-do</button></a>
-          <a routerLink="/profile"><button type="button" class="btn btn-primary" style="width:166px">Profile</button></a>
-        </div>
-      </div>
-    </div>
-
-
-    <ul class="nav navbar-nav navbar-right" style="background-color: black">
-        <li *ngIf="!isAuthenticated()" routerLinkActive= "active">
-          <a routerLink="/signup" style="background-color: black">
-            <button class="btn btn-primary" style="margin-top: -70px" >Sign Up</button>
-          </a>
-        </li>
-        <li *ngIf="!isAuthenticated()"routerLinkActive= "active">
-          <a routerLink="/signin" style="background-color: black">
-            <button class="btn btn-success" style="margin-top: -70px">Sign In</button>
-          </a>
-        </li>
-      <li *ngIf="isAuthenticated()" routerLinkActive= "active">
-        <a routerLink="" style="background-color: black">
-          <button class="btn btn-success" style="margin-top: -70px">Log Out</button>
-        </a>
-      </li>
-    </ul>
-  </div>
-
-  <div class="btn-group">
-    <div class="container" style="margin-left: 100px;">
-      <div class="row">
-        <div class="col-lg-3">
-          <button type="button" class="btn btn-primary" style="height: 50px; width: 300px">All</button>
-        </div>
-        <div class="col-lg-3">
-          <button type="button" class="btn btn-success" style="height: 50px; width: 300px">Completed</button>
-        </div>
-        <div class="col-lg-3">
-          <button type="button" class="btn btn-danger" style="height: 50px; width: 300px">Late</button>
-        </div>
-        <div class="col-lg-3">
-          <button type="button" class="btn btn-warning" style="height: 50px; width: 300px">Ongoing</button>
-        </div>
-      </div>
+<nav class="navbar navbar-default">
+  <div class="container-fluid" style="background-color: black">
+    <!--<div class="navbar-header"> <a routerLink="/" class="navbar-brand">Recipe Book</a></div>-->
+    <div>
+      <ul class="nav navbar-nav">
+        <!--<li><a href="#" (click)="onSelect('recipe')">Recipes</a></li>-->
+        <!--<li><a href="#" (click)="onSelect('shopping-list')">Shopping List</a></li>-->
+        <li *ngIf="isAuthenticated()" routerLinkActive= "active" ><a routerLink="/todo/new">New</a></li>
+        <li *ngIf="isAuthenticated()" routerLinkActive= "active" ><a routerLink="/todo">To-dos</a></li>
+        <li *ngIf="isAuthenticated()" routerLinkActive= "active" ><a routerLink="/profile">Profile</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right ">
+        <ng-template [ngIf]="!isAuthenticated()">
+          <li routerLinkActive= "active"><a routerLink="/signup">Register</a></li>
+          <li routerLinkActive= "active"><a routerLink="/signin">Login</a></li>
+        </ng-template>
+        <li *ngIf="isAuthenticated()"><a style="cursor: pointer" (click)="onLogout()">Logout</a></li>
+        <!--<li class="dropdown" appDropdown *ngIf="isAuthenticated()"> <a style="cursor: pointer;" class="dropdown-toggle" role="button">Manage<span class="caret"></span></a>-->
+          <!--<ul class="dropdown-menu">-->
+            <!--<li><a style="cursor: pointer;" (click)="onSaveData()">Saving Data</a></li>-->
+            <!--<li><a style="cursor: pointer;" (click)="onFetchData()">Fetch Data</a></li>-->
+          <!--</ul>-->
+        <!--</li>-->
+      </ul>
     </div>
   </div>
 </nav>
+
+
+
+
+<!--<nav class="navbar navbar-default" style="background-color: black">-->
+  <!--<div class="container-fluid navCustom">-->
+    <!--<div class="row">-->
+      <!--<div class="navbar-header col-lg-2">-->
+        <!--<a class="navbar-brand" routerLink="/"><img src="/assets/images/krello.jpg" style="width: 120px;  margin-top:10px; margin-left:-5px"></a>-->
+      <!--</div>-->
+      <!--<div class="col-lg-6">-->
+        <!--<div class="btn-group" style="margin-top: 30px; margin-left: 150px" *ngIf="isAuthenticated()">-->
+          <!--<a routerLink="/todo/new"><button type="button" class="btn btn-primary"  style="width:166px">New</button></a>-->
+          <!--<a routerLink="/todo"><button type="button" class="btn btn-primary "  style="width:166px">To-do</button></a>-->
+          <!--<a routerLink="/profile"><button type="button" class="btn btn-primary" style="width:166px">Profile</button></a>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+
+
+    <!--<ul class="nav navbar-nav navbar-right" style="background-color: black">-->
+
+        <!--<li *ngIf="!isAuthenticated()" routerLinkActive= "active">-->
+          <!--<a routerLink="/signup" style="background-color: black">-->
+            <!--<button class="btn btn-primary" style="margin-top: -70px" >Sign Up</button>-->
+          <!--</a>-->
+        <!--</li>-->
+
+
+        <!--<li *ngIf="!isAuthenticated()"routerLinkActive= "active">-->
+          <!--<a routerLink="/signin" style="background-color: black">-->
+            <!--<button class="btn btn-success" style="margin-top: -70px">Sign In</button>-->
+          <!--</a>-->
+        <!--</li>-->
+
+      <!--<li *ngIf="isAuthenticated()" routerLinkActive= "active">-->
+          <!--<button class="btn btn-success" (click)="onLogout()" style="margin-top: -70px">Log Out</button>-->
+      <!--</li>-->
+    <!--</ul>-->
+  <!--</div>-->
+
+  <!--<div class="btn-group">-->
+    <!--<div class="container" style="margin-left: 100px;">-->
+      <!--<div class="row">-->
+        <!--<div class="col-lg-3">-->
+          <!--<button type="button" class="btn btn-primary" style="height: 50px; width: 300px">All</button>-->
+        <!--</div>-->
+        <!--<div class="col-lg-3">-->
+          <!--<button type="button" class="btn btn-success" style="height: 50px; width: 300px">Completed</button>-->
+        <!--</div>-->
+        <!--<div class="col-lg-3">-->
+          <!--<button type="button" class="btn btn-danger" style="height: 50px; width: 300px">Late</button>-->
+        <!--</div>-->
+        <!--<div class="col-lg-3">-->
+          <!--<button type="button" class="btn btn-warning" style="height: 50px; width: 300px">Ongoing</button>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</nav>-->
 
 

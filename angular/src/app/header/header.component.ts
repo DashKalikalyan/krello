@@ -7,7 +7,6 @@ import {AuthService} from "../auth/auth.service";
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
   constructor(private authService : AuthService) { }
 
   ngOnInit() {
@@ -15,5 +14,8 @@ export class HeaderComponent implements OnInit {
 
   isAuthenticated() {
     return this.authService.getToken();
+  }
+  onLogout() {
+    this.authService.logoutUser();
   }
 }

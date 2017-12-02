@@ -2,16 +2,16 @@
   <div style="max-width: 1200px;padding: 2pc;position: relative; height:200px">
     <div class="row">
       <div class="col-lg-2">
-        <div class="gavatar" >{{profile.lastName.substring(0,1) + profile.firstName.substring(0,1)}}</div>
+        <div class="gavatar" >{{user.lastName.substring(0,1) + user.firstName.substring(0,1)}}</div>
       </div>
       <div class="col-lg-6">
-        <h1>{{profile.firstName+' '+profile.lastName}}</h1>
-        <h4>{{profile.email}}</h4>
-        <p>{{profile.phoneNumber}}</p>
+        <h1>{{user.firstName+' '+user.lastName}}</h1>
+        <h4>{{user.email}}</h4>
+        <p>{{user.phoneNumber}}</p>
       </div>
 
       <div class="col-lg-2 pull-right">
-        <button class="btn btn-primary" routerLink="edit"><span class="glyphicon glyphicon-edit"></span> Edit Profile</button>
+        <button class="btn btn-primary" routerLink="edit"><span class="glyphicon glyphicon-edit"></span> Edit user</button>
       </div>
     </div>
   </div>

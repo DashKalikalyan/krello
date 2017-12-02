@@ -26,14 +26,15 @@
         <div class="col-lg-12">
           <div class="form-group">
             <label for="category">Category</label>
-            <input
-              type="text"
-              id="category"
-              name="category"
-              class="form-control"
-              placeholder="ex- work, study, home"
-              [ngModel]="todo.category"
-              required>
+            <select class="form-control"
+                    id="category"
+                    required
+                    [ngModel]="todo.category"
+                    name="category">
+              <option value="work">Work</option>
+              <option value="home">Home</option>
+              <option value="other">Other</option>
+            </select>
           </div>
         </div>
       </div>
@@ -42,17 +43,20 @@
         <div class="col-lg-12">
           <div class="form-group">
             <label for="priority">Priority</label>
-            <input
-              type="text"
-              id="priority"
-              name="priority"
-              class="form-control"
-              placeholder="ex- ex- high medium low"
-              [ngModel]="todo.priority"
-              required>
+            <select class="form-control"
+                    id="priority"
+                    required
+                    [ngModel]="todo.priority"
+                    name="priority">
+              <option value="high">High</option>
+              <option value="medium">Medium</option>
+              <option value="low">Low</option>
+            </select>
           </div>
         </div>
       </div>
+
+
 
       <div class="row">
         <div class="col-lg-12">
@@ -73,15 +77,15 @@
       <div class="row">
         <div class="col-lg-12">
           <div class="form-group">
-            <label for="completed">Is it completed??</label>
-            <input
-              type="text"
-              id="completed"
-              name="completed"
-              class="form-control"
-              placeholder="ex- yes or no"
-              [ngModel]="todo.completed"
-              required>
+            <label for="completed">Status</label>
+            <select class="form-control"
+                    id="completed"
+                    required
+                    [ngModel]="todo.completed"
+                    name="completed">
+              <option value="true">Completed</option>
+              <option value="false">Not Completed</option>
+            </select>
           </div>
         </div>
       </div>

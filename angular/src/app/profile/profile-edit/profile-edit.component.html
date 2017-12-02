@@ -16,7 +16,7 @@
                   name="firstName"
                   class="form-control"
                   placeholder="First Name"
-                  [ngModel]="profile.firstName"
+                  [ngModel]="user.firstName"
                   required>
               </div>
             </div>
@@ -32,7 +32,7 @@
                   name="lastName"
                   class="form-control"
                   placeholder="Last Name"
-                  [ngModel]="profile.lastName"
+                  [ngModel]="user.lastName"
                   required>
               </div>
             </div>
@@ -46,7 +46,7 @@
               name="phoneNumber"
               class="form-control"
               placeholder="Phone Number"
-              [ngModel]="profile.phoneNumber"
+              [ngModel]="user.phoneNumber"
               required>
           </div>
 
@@ -60,7 +60,7 @@
                     name="email"
                     class="form-control"
                     placeholder="Email id"
-                    [ngModel]="profile.email"
+                    [ngModel]="user.email"
                     required
                     email
                     #email="ngModel">

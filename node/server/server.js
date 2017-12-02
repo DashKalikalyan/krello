@@ -127,6 +127,15 @@ app.post('/users', (req, res) => {
     });
 });
 
+app.put('/users/:id', (req, res) => {
+    User.findOneAndUpdate({_id:req.params.id}, {$set: req.body}, {new: true}).then((doc) => {
+        console.log('updating now',doc);
+        res.send(doc);
+    }, (e) => {
+        res.status(400).send(e);
+    });
+})
+
 app.post('/users/login', (req, res) => {
     var body = _.pick(req.body, ['email', 'password']);
     console.log(body);
@@ -157,9 +166,10 @@ app.get('/users', (req, res) => {
     });
 });
 
+
 app.delete('/users/me/token', authenticate, (req, res) => {
-    req.user.removeToken(req.token).then(() => {
-        res.status(200).send('logged out');
+    req.user.removeToken(req.token).then((doc) => {
+        res.status(200).send(doc);
     });
 });
 
