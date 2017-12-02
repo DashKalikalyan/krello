@@ -1,7 +1,6 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import {Todo} from './todo.model';
 import {Subject} from "rxjs/Subject";
-import {Http} from "@angular/http";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {AuthService} from "../auth/auth.service";
 
@@ -11,31 +10,18 @@ export class TodoService {
 
   todoSelected = new EventEmitter<Todo>();
   todoChanged = new Subject<Todo[]>();
-  todos : Todo[] = [
-    new Todo ('Do the 272 assignment','study','high', false, new Date ("October 13, 2014 11:13:00"),null),
-    new Todo ('Do the 180 assignment','study','medium', false, new Date ("October 13, 2014 11:13:00"),null),
-    new Todo ('Do the 138 assignment','study','medium', false, new Date ("October 13, 2014 11:13:00"),null),
-    new Todo ('Do the 138 assignment','study','medium', false, new Date ("October 13, 2014 11:13:00"),null),
-    new Todo ('Do the 138 assignment','study','medium', false, new Date ("October 13, 2014 11:13:00"),null),
-    new Todo ('Do the 138 assignment','study','medium', false, new Date ("October 13, 2014 11:13:00"),null),
-    new Todo ('Do the 138 assignment','study','medium', false, new Date ("October 13, 2014 11:13:00"),null)
-  ];
-  constructor(private http : HttpClient,
-              private authService : AuthService) { }
+  todos : any;
+  // todos : Todo[] = [
+  //   new Todo ('Do the 272 assignment','study','high', false, new Date ("October 13, 2014 11:13:00"),null),
+  //   new Todo ('Do the 180 assignment','study','medium', false, new Date ("October 13, 2014 11:13:00"),null),
+  //   new Todo ('Do the 138 assignment','study','medium', false, new Date ("October 13, 2014 11:13:00"),null),
+  //   new Todo ('Do the 138 assignment','study','medium', false, new Date ("October 13, 2014 11:13:00"),null),
+  //   new Todo ('Do the 138 assignment','study','medium', false, new Date ("October 13, 2014 11:13:00"),null),
+  //   new Todo ('Do the 138 assignment','study','medium', false, new Date ("October 13, 2014 11:13:00"),null),
+  //   new Todo ('Do the 138 assignment','study','medium', false, new Date ("October 13, 2014 11:13:00"),null)
+  // ];
+  constructor() { }
 
-  getTodos() {
-    const token = this.authService.getToken();
-    console.log(token);
-    const header = new HttpHeaders().set('x-auth', token);
-    console.log(header);
-    console.log('getting todos from the back end');
-    this.http.get('http://localhost:3000/todos', {headers: header})
-      .subscribe((response) => {
-        console.log(response);
-      });
-    console.log();
-    return this.todos.slice();
-  }
 
   getTodo(index : number) {
     return this.todos[index];
@@ -49,6 +35,17 @@ export class TodoService {
   addTodo(todo : Todo) {
     this.todos.unshift(todo);
     this.todoChanged.next(this.todos.slice());
+  }
+
+  setTodos (todos : Todo[]) {
+    console.log('setTodos');
+    this.todos = todos;
+    console.log('Todos got',this.todos);
+    this.todoChanged.next(this.todos.slice());
+  }
+
+  getId(index : number) {
+    return this.todos[index]._id;
   }
 
 }

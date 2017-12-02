@@ -3,6 +3,7 @@ import {ActivatedRoute, Params, Router} from "@angular/router";
 import {TodoService} from "../todo.service";
 import {Todo} from "../todo.model";
 import {NgForm} from "@angular/forms";
+import {StorageService} from "../../storage/storage.service";
 
 @Component({
   selector: 'app-recipe-edit',
@@ -15,7 +16,8 @@ export class TodoEditComponent implements OnInit {
   editMode : boolean;
   constructor(private route : ActivatedRoute,
               private todoService : TodoService,
-              private router : Router) { }
+              private router : Router,
+              private storageService : StorageService) { }
 
   ngOnInit() {
     this.route.params
@@ -48,20 +50,30 @@ export class TodoEditComponent implements OnInit {
       this.todo.category = form.value.category;
       this.todo.priority = form.value.priority;
       this.todo.toBeCompletedBy = form.value.toBeCompletedBy;
-      this.todo.completed = form.value.completed ;
+      if (form.value.completed === 'true') {
+        this.todo.completed =  true;
+      } else {
+        this.todo.completed =  false;
+      }
       console.log(this.todo);
-      this.todoService.updateTodo(this.id, this.todo);
+      this.storageService.updateTodo(this.id, this.todo);
+      this.router.navigate(['todo', this.id]);
     } else {
-      console.log()
+      console.log();
       this.todo.text = form.value.text;
       this.todo.category = form.value.category;
       this.todo.priority = form.value.priority;
       this.todo.toBeCompletedBy = form.value.toBeCompletedBy;
-      this.todo.completed = form.value.completed ;
-      this.todoService.addTodo(this.todo);
+      if (form.value.completed === 'true') {
+        this.todo.completed =  true;
+      } else {
+        this.todo.completed =  false;
+      }
+
+      this.storageService.addTodo(this.todo);
+      this.router.navigate(['todo']);
     }
 
-    this.router.navigate(['todo', this.id]);
   }
 
   onCancel() {

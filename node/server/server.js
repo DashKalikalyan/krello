@@ -1,3 +1,5 @@
+
+
 var express = require('express');
 var bodyParser = require('body-parser');
 //being added to control the update being done by user in PATCH HTTP request
@@ -18,6 +20,14 @@ var authenticate = require('./middleware/authenticate').authenticate;
 
 
 var app = express();
+
+app.use(function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', 'http://localhost:4200');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, X-AUTHENTICATION, X-IP, Content-Type, Accept');
+    res.header('Access-Control-Allow-Credentials', true);
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
+    next();
+});
 
 app.use(bodyParser.json());
 
@@ -40,7 +50,7 @@ app.post('/todos', authenticate,(req, res) => {
 
 
 app.get('/todos', authenticate, (req, res) => {
-    Todo.find({_creator:req.user._id},'text').then((todos) => {
+    Todo.find({_creator:req.user._id}).sort({_id: -1}).then((todos) => {
         res.send(todos);
     }, (e) => {
         res.status(400).send(e);
@@ -72,8 +82,8 @@ app.delete('/todos/:id', authenticate, (req, res) => {
 });
 
 
-app.patch('/todos/:id', authenticate,(req, res)=> {
-    var body = _.pick(req.body, ['text', 'completed']);
+app.put('/todos/:id', authenticate,(req, res)=> {
+    var body = _.pick(req.body, ['text', 'completed','priority', 'category', 'toBeCompletedBy']);
     if (_.isBoolean(body.completed) && body.completed) {
         body.completedAt = new Date();
 
@@ -82,6 +92,7 @@ app.patch('/todos/:id', authenticate,(req, res)=> {
         body.completedAt=null;
     }
     Todo.findOneAndUpdate({_id:req.params.id, _creator: req.user._id}, {$set: body}, {new: true}).then((doc) => {
+        console.log('updating now',doc);
         res.send(doc);
     }, (e) => {
         res.status(400).send(e);

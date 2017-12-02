@@ -5,7 +5,7 @@
         <a class="navbar-brand" routerLink="/"><img src="/assets/images/krello.jpg" style="width: 120px;  margin-top:10px; margin-left:-5px"></a>
       </div>
       <div class="col-lg-6">
-        <div class="btn-group" style="margin-top: 30px; margin-left: 150px">
+        <div class="btn-group" style="margin-top: 30px; margin-left: 150px" *ngIf="isAuthenticated()">
           <a routerLink="/todo/new"><button type="button" class="btn btn-primary"  style="width:166px">New</button></a>
           <a routerLink="/todo"><button type="button" class="btn btn-primary "  style="width:166px">To-do</button></a>
           <a routerLink="/profile"><button type="button" class="btn btn-primary" style="width:166px">Profile</button></a>
@@ -15,16 +15,21 @@
 
 
     <ul class="nav navbar-nav navbar-right" style="background-color: black">
-        <li routerLinkActive= "active">
+        <li *ngIf="!isAuthenticated()" routerLinkActive= "active">
           <a routerLink="/signup" style="background-color: black">
             <button class="btn btn-primary" style="margin-top: -70px" >Sign Up</button>
           </a>
         </li>
-        <li routerLinkActive= "active">
+        <li *ngIf="!isAuthenticated()"routerLinkActive= "active">
           <a routerLink="/signin" style="background-color: black">
             <button class="btn btn-success" style="margin-top: -70px">Sign In</button>
           </a>
         </li>
+      <li *ngIf="isAuthenticated()" routerLinkActive= "active">
+        <a routerLink="" style="background-color: black">
+          <button class="btn btn-success" style="margin-top: -70px">Log Out</button>
+        </a>
+      </li>
     </ul>
   </div>
 

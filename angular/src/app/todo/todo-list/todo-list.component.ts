@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Todo} from '../todo.model';
+import {StorageService} from "../../storage/storage.service";
 import {TodoService} from "../todo.service";
 
 @Component({
@@ -10,14 +11,18 @@ import {TodoService} from "../todo.service";
 export class TodoListComponent implements OnInit {
 
   todos : Todo[];
-  constructor(private todoService:TodoService) { }
+  constructor(private storageService:StorageService,
+              private todoService : TodoService) { }
 
   ngOnInit() {
       this.todoService.todoChanged
         .subscribe((todos : Todo[] ) => {
+          console.log('emit');
           this.todos = todos;
         });
-      this.todos = this.todoService.getTodos();
+      this.storageService.getTodos();
+      // console.log('getting the todos from todoService');
+      // this.todos = this.todoService.getTodos();
   }
 
 }

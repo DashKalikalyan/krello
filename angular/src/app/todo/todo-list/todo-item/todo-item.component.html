@@ -1,21 +1,28 @@
-<a [routerLink]="['/todo',index]">
+
   <div class="row">
-    <div class= "col-lg-12" style="background-color: #edeff0; border: 2px solid black">
+    <div class= "col-lg-12 active" style="background-color: #edeff0; border: 2px solid black">
       <div style="max-width: 1200px; max-height: 100px;padding: 2pc;position: relative; height:200px">
         <div class="row">
-          <div class="col-lg-6">
-            <h4>{{todo.text}}</h4>
-            <h4>Priority- {{todo.priority}}</h4>
-            <h3>Completed- {{todo.completed}}</h3>
-            <p>Due: {{todo.toBeCompletedBy}}</p>
-            <h3>{{todo.completedAt}}</h3>
-            <p>{{todo.category}}</p>
-          </div>
+          <a [routerLink]="['/todo',index]" routerLinkActive = "active">
+            <div class="col-lg-6">
+              <h4>{{todo.text}}</h4>
+              <h4>Priority- {{todo.priority}}</h4>
+              <h3>Completed- {{todo.completed}}</h3>
+              <p>Due: {{todo.toBeCompletedBy}}</p>
+              <h3>{{todo.completedAt}}</h3>
+              <p>{{todo.category}}</p>
+            </div>
+          </a>
+        </div>
+        <div>
+          <button class="pull-right btn btn-danger delete-button" (click)="onDeleteTodo()">Delete</button>
         </div>
       </div>
     </div>
+
   </div>
-</a>
+
+
 
 
 

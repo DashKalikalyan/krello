@@ -21,6 +21,7 @@ import {ProfileService} from "./profile/profile.service";
 import {AuthService} from "./auth/auth.service";
 import {HttpModule} from "@angular/http";
 import {HttpClientModule} from "@angular/common/http";
+import {StorageService} from "./storage/storage.service";
 
 @NgModule({
   declarations: [
@@ -45,7 +46,7 @@ import {HttpClientModule} from "@angular/common/http";
     HttpModule,
     HttpClientModule
   ],
-  providers: [TodoService, ProfileService, AuthService],
+  providers: [TodoService, ProfileService, AuthService, StorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
